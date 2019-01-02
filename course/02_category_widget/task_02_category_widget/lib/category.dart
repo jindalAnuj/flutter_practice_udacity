@@ -10,13 +10,23 @@ import 'package:flutter/material.dart';
 ///
 /// The widget is composed on an [Icon] and [Text]. Tapping on the widget shows
 /// a colored [InkWell] animation.
+var _rowHeight = 100.0;
+final _borderRadius = BorderRadius.circular(_rowHeight / 2);
+
 class Category extends StatelessWidget {
   /// Creates a [Category].
   ///
+  ///
   /// A [Category] saves the name of the Category (e.g. 'Length'), its color for
   /// the UI, and the icon that represents it (e.g. a ruler).
-  // TODO: You'll need the name, color, and iconLocation from main.dart
-  const Category();
+  // TODO:Done You'll need the name, color, and iconLocation from main.dart
+  final String _cstegoryName;
+  final ColorSwatch _categoryColor;
+  final IconData _categoryIcon;
+
+
+
+  const Category(this._cstegoryName, this._categoryColor, this._categoryIcon);
 
   /// Builds a custom widget that shows [Category] information.
   ///
@@ -28,6 +38,34 @@ class Category extends StatelessWidget {
   // See https://docs.flutter.io/flutter/material/Theme-class.html
   Widget build(BuildContext context) {
     // TODO: Build the custom widget here, referring to the Specs.
-    return Container();
+    return Material(
+      color: Colors.transparent,
+      child: Container(
+        height: _rowHeight,
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: InkWell(
+            highlightColor: _categoryColor,
+            splashColor: _categoryColor,
+            borderRadius: _borderRadius,
+            onTap: (){
+              print('I was tapped');
+            },
+            child: Row(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Icon(
+                    _categoryIcon,
+                    size: 60.0,
+                  ),
+                ),
+                Center(child: Text(_cstegoryName,textAlign: TextAlign.center,style: Theme.of(context).textTheme.headline,))
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
