@@ -138,6 +138,7 @@ class Backdrop extends StatefulWidget {
 
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
+  //Globalkey is used to realocate widget tree
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
   AnimationController _controller;
 
